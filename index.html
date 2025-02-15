@@ -10,20 +10,17 @@
   <div id="content"></div>
 
   <script>
-    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-    const url = 'https://pastebin.com/raw/6VUF2FEC';
 
-    fetch(corsProxy + url, {
+  fetch('https://limewire.com/d/f27a5e55-31c2-4eab-98b1-26084c1a51cd#smeqqAlTLFZVcAndIVNKL4XtBIEYuctlK6_Vix4rc8c', {
       method: 'GET',
-      headers: {
-        'Accept': 'text/plain',
-      }
+      mode: 'no-cors',
     })
     .then(response => response.text())
     .then(base64Str => {
       const decodedStr = atob(base64Str);
       const decodedUtf8 = decodeURIComponent(escape(decodedStr));
-      document.getElementById('content').innerHTML = marked.parse(decodedUtf8);
+      const markdownContent = decodedUtf8;
+      document.getElementById('content').innerHTML = marked.parse(markdownContent);
     })
     .catch(error => console.error('Error fetching or decoding file:', error));
   </script>
