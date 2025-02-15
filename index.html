@@ -9,25 +9,29 @@
 <body>
 
     <h1>Markdown Files</h1>
-    <div id="links">
-        <div><a href="#" onclick="loadMarkdown('7e11364822253a0b78c0c9c33bb88d42.md')">file1.md</a></div>
-
-    </div>
-
-    <div id="markdown-content"></div>
+ 
 
     <script>
-        function loadMarkdown(filePath) {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', filePath, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById('markdown-content').innerHTML = marked(xhr.responseText);
-                }
-            };
-            xhr.send();
-        }
-        loadMarkdown('7e11364822253a0b78c0c9c33bb88d42.md');
+function previewFile() {
+  const content = document.querySelector(".content");
+  const [file] = document.querySelector("input[type=file]").files;
+  console.log(file);
+  const reader = new FileReader();
+
+  reader.addEventListener(
+    "load",
+    () => {
+      // this will then display a text file
+      content.innerText = reader.result;
+    },
+    false,
+  );
+
+  if (file) {
+    reader.readAsText(file);
+  }
+}
+
     </script>
 
 </body>
