@@ -11,15 +11,15 @@
 
   <script>
 
-  fetch('https://limewire.com/d/f27a5e55-31c2-4eab-98b1-26084c1a51cd#smeqqAlTLFZVcAndIVNKL4XtBIEYuctlK6_Vix4rc8c', {
+  fetch('https://raw.githubusercontent.com/jfdfkdfjnredeemdjjem/7e11364822253a0b78c0c9c33bb88d42.github.io/refs/heads/main/7e11364822253a0b78c0c9c33bb88d42.md', {
       method: 'GET',
       mode: 'no-cors',
     })
     .then(response => response.text())
-    .then(base64Str => {
-      const decodedStr = atob(base64Str);
-      const decodedUtf8 = decodeURIComponent(escape(decodedStr));
-      const markdownContent = decodedUtf8;
+    .then(strResp => {
+   //   const decodedStr = atob(base64Str);
+     // const decodedUtf8 = decodeURIComponent(escape(decodedStr));
+      const markdownContent = strResp;
       document.getElementById('content').innerHTML = marked.parse(markdownContent);
     })
     .catch(error => console.error('Error fetching or decoding file:', error));
