@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Render Markdown Files</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/15.0.6/marked.min.js"></script>
+</head>
+<body>
+
+    <h1>Markdown Files</h1>
+    <div id="links">
+        <div><a href="#" onclick="loadMarkdown('18958e30bdca0cfac8256824e570a89b/ebf92826c7c1af9ec9ef9c90bab14b61.md')">file1.md</a></div>
+
+    </div>
+
+    <div id="markdown-content"></div>
+
+    <script>
+        function loadMarkdown(filePath) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', filePath, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('markdown-content').innerHTML = marked(xhr.responseText);
+                }
+            };
+            xhr.send();
+        }
+        loadMarkdown('18958e30bdca0cfac8256824e570a89b/ebf92826c7c1af9ec9ef9c90bab14b61.md');
+    </script>
+
+</body>
+</html>
