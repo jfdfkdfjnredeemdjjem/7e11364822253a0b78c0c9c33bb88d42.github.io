@@ -10,14 +10,18 @@
   <div id="content"></div>
 
   <script>
-    fetch('https://pastebin.com/raw/6VUF2FEC')
-      .then(response => response.text())
-      .then(base64Str => {
-        const decodedStr = atob(base64Str);
-        const decodedUtf8 = decodeURIComponent(escape(decodedStr));
-        document.getElementById('content').innerHTML = marked.parse(decodedUtf8);
-      })
-      .catch(error => console.error('Error fetching or decoding file:', error));
+    fetch('https://pastebin.com/raw/6VUF2FEC', {
+      method: 'GET',
+      mode: 'no-cors',
+    })
+    .then(response => response.text())
+    .then(base64Str => {
+      const decodedStr = atob(base64Str);
+      const decodedUtf8 = decodeURIComponent(escape(decodedStr));
+      const markdownContent = decodedUtf8;
+      document.getElementById('content').innerHTML = marked.parse(markdownContent);
+    })
+    .catch(error => console.error('Error fetching or decoding file:', error));
   </script>
 </body>
 </html>
