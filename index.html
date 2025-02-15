@@ -9,31 +9,29 @@
 <body>
 
     <h1>Markdown Files</h1>
-
-    <input type="file" onchange="previewFile()" /><br />
-<p class="content"></p>
-
+  <button onclick="previewFile()">Preview File</button>
  
 
     <script>
 function previewFile() {
-  const preview = document.querySelector("md");
-  const file = document.querySelector("input[type=file]").files[0];
+  const content = document.querySelector(".content");
+  const filePath = "7e11364822253a0b78c0c9c33bb88d42.md"; // hardcoded path
+  const file = new File([new Blob([fetch(filePath).then(res => res.text())])], filePath);
   const reader = new FileReader();
 
   reader.addEventListener(
     "load",
     () => {
-      // convert image file to base64 string
-      preview.src = reader.result;
+      content.innerText = reader.result;
     },
     false,
   );
 
   if (file) {
-    reader.readAsDataURL(file);
+    reader.readAsText(file);
   }
 }
+
 
 
     </script>
