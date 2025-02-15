@@ -4,12 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Render Markdown</title>
-<script src="https://cdn.jsdelivr.net/npm/marked@15.0.7/lib/marked.umd.min.js"></script>
 </head>
-<body>
-  <div id="content"></div>
 
+  
+<body>
+
+
+
+
+  <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
+
     const markdownString = `---
 layout: post
 title: "Модуль 1 MalDev Academy на русском"
@@ -112,8 +118,13 @@ title: "Модуль 1 MalDev Academy на русском"
 
 Если тебе понравилось, подпишись на канал https://t.me/l33trfm0x 
 `;
+    
+    document.getElementById('content').innerHTML =
+      marked.parse('# Marked in browser\n\nRendered by **marked**.');
 
-    document.getElementById('content').innerHTML = marked(markdownString);
+  marked.parse(markdownString);
   </script>
+  
+
 </body>
 </html>
